@@ -353,6 +353,11 @@ nav.show div.icon-close {
   margin-bottom: 1.2rem;
 }
 
+.cards video {
+  height: 100%;
+  width: 26rem;
+}
+
 /* Testimonials */
 
 #testimonials {
@@ -633,11 +638,6 @@ small devices: < 767 */
     padding-right: 0 4.8rem;
   }
 
-  .cards video {
-    height: 100%;
-    width: 260px;
-  }
-
   /* Testimonials */
 
   #testimonials .container {
@@ -681,5 +681,17 @@ small devices: < 767 */
   :root {
     --title-font-size: 3.6rem;
     --subtitle-font-size: 1.8rem;
+  }
+}
+
+@media (min-width: 767px) {
+  .cards {
+    grid-template-columns: 1fr 1fr;
+    padding-left: 0 4.8rem;
+    padding-right: 0 4.8rem;
+  }
+
+  .cards.grid {
+    gap: 6.4rem;
   }
 }
