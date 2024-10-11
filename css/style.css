@@ -1,0 +1,685 @@
+/* Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+ul {
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+}
+
+img {
+  width: 100%;
+  height: auto;
+}
+
+/* Cores e conversão rem */
+:root {
+  --header-height: 7.2rem;
+  --transition-time: 0.3s;
+  --dark: #333d47;
+  --medium: #61aa93;
+  --light: #c0ddd4;
+  --background: #0f1c2b;
+  --white: #f9f9f9;
+  --grey: #767676;
+  --light-grey: #e4e4e4;
+  font-size: 62.5%;
+  box-sizing: border-box;
+
+  /* font-family: "DM Sans", sans-serif; */
+  /* font-family: "Poppins", sans-serif; */
+  /* Responsive */
+  --title-font-size: 3rem;
+  --subtitle-font-size: 1.6rem;
+}
+
+/* Base */
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font: 400 1.6rem "DM Sans", sans-serif;
+  background: var(--background);
+  color: var(--light-grey);
+}
+
+.title {
+  font: 700 var(--title-font-size) "Poppins", sans-serif;
+  color: var(--white);
+}
+
+.button {
+  background: var(--medium);
+  color: var(--background);
+  height: 5.6rem;
+  display: inline-flex;
+  align-items: center;
+  padding: 0 3.2rem;
+  border-radius: 0.4rem;
+  font: 500 1.6rem "DM Sans", sans-serif;
+  transition: var(--transition-time);
+}
+
+.button:hover {
+  filter: brightness(1.1);
+}
+
+.divider-1 {
+  height: 0.1rem;
+  background: linear-gradient(270deg, var(--medium), var(--grey));
+}
+
+.divider-2 {
+  height: 0.1rem;
+  background: linear-gradient(270deg, var(--grey), var(--medium));
+}
+/* Layout */
+
+.container {
+  margin: 0 2.4rem;
+}
+
+.grid {
+  display: grid;
+  gap: 3.2rem;
+}
+
+.section {
+  padding: calc(8rem + var(--header-height)) 0;
+}
+
+.section .title {
+  margin-bottom: 1.6rem;
+}
+
+.section .subtitle {
+  font-size: var(--subtitle-font-size);
+}
+
+.section header {
+  margin-bottom: 6.4rem;
+}
+
+#header {
+  border-bottom: 1px solid var(--dark);
+  margin-bottom: 3.2rem;
+  display: flex;
+  width: 100%;
+  position: fixed;
+  z-index: 100;
+  background: var(--dark);
+  top: 0;
+  left: 0;
+}
+
+#header.scroll {
+  box-shadow: 0 0 12px rgba(0, 0, 0, 0.1);
+}
+
+/* Logo */
+
+.logo {
+  font: 700 3rem "Poppins", sans-serif;
+  color: var(--white);
+}
+
+span {
+  color: var(--medium);
+}
+
+.logo-alt span {
+  color: var(--background);
+}
+
+/* Navigation */
+
+nav {
+  height: var(--header-height);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+}
+
+nav ul li {
+  text-align: center;
+}
+
+nav ul li a {
+  transition: color var(--transition-time);
+  position: relative;
+}
+
+nav ul li a:hover,
+nav ul li a.active {
+  color: var(--medium);
+}
+
+nav ul li a::after {
+  content: "";
+  width: 0%;
+  height: 0.2rem;
+  background: var(--medium);
+  position: absolute;
+  left: 0;
+  bottom: -2.4rem;
+  transition: width var(--transition-time);
+}
+
+nav ul li a:hover::after,
+nav ul li a.active::after {
+  width: 100%;
+}
+
+/* Menu Show */
+
+nav .menu {
+  opacity: 0;
+  visibility: hidden;
+  top: -32rem;
+  transition: var(--transition-time);
+}
+
+nav .menu ul {
+  display: none;
+}
+
+nav.show ul.grid {
+  gap: 6.4rem;
+}
+
+nav.show .menu {
+  opacity: 1;
+  visibility: visible;
+  background: var(--background);
+  height: 100vh;
+  width: 100vw;
+  position: fixed;
+  top: 0;
+  left: 0;
+  display: grid;
+  place-content: center;
+}
+
+nav.show .menu ul {
+  display: grid;
+}
+
+nav.show ul.grid {
+  gap: 6.4rem;
+}
+
+/* Toggle menu */
+.toggle {
+  color: var(--medium);
+  font-size: 2.4rem;
+  cursor: pointer;
+}
+
+nav .icon-close {
+  visibility: hidden;
+  opacity: 0;
+  position: absolute;
+  top: -2.4rem;
+  right: 2.4rem;
+  transition: var(--transition-time);
+}
+
+nav.show div.icon-close {
+  visibility: visible;
+  opacity: 1;
+  top: 2.4rem;
+}
+
+/* Home */
+
+#home {
+  overflow: hidden;
+}
+
+#home .container {
+  margin: 0;
+}
+
+#home .image {
+  position: relative;
+}
+
+#home .image::before {
+  content: "";
+  height: 100%;
+  width: 100%;
+  background: var(--light);
+  position: absolute;
+  top: -16.8%;
+  left: 16.8%;
+  z-index: 0;
+}
+
+#home .image img {
+  position: relative;
+  right: 4.7rem;
+}
+
+#home .image img,
+#home .image::before {
+  border-radius: 0.4rem;
+}
+
+#home .text {
+  margin: 0 2.4rem;
+  text-align: center;
+}
+
+#home .text h1 {
+  margin-bottom: 1.6rem;
+}
+
+#home .text p {
+  margin-bottom: 3.2rem;
+}
+
+/* About */
+
+#about {
+  background: var(--background);
+}
+
+#about .container {
+  margin: 0;
+}
+
+#about .image {
+  position: relative;
+}
+
+#about .image::before {
+  content: "";
+  height: 100%;
+  width: 100%;
+  background: var(--light);
+  position: absolute;
+  top: -8.3%;
+  left: -33%;
+  z-index: 0;
+}
+
+#about .image img {
+  position: relative;
+}
+
+#about .image img,
+#about .image::before {
+  border-radius: 0.4rem;
+}
+
+#about .text {
+  margin: 0 2.4rem;
+  text-align: center;
+}
+
+/* Serviços */
+
+.cards.grid {
+  gap: 16.4rem;
+}
+
+.card {
+  padding: 5.8rem 3.2rem;
+  box-shadow: 0px 0px 12px rgba(0, 0, 0, 0.08);
+  border-bottom: 0.4rem solid var(--medium);
+  border-radius: 0.4rem 0.4rem 0 0;
+  text-align: center;
+  background: var(--dark);
+}
+
+.card i {
+  display: block;
+  margin-bottom: 2.4rem;
+  font-size: 8rem;
+  color: var(--dark);
+}
+
+.card .title {
+  font-size: 2.4rem;
+  margin-bottom: 1.2rem;
+}
+
+/* Testimonials */
+
+#testimonials {
+  background: var(--background);
+}
+
+#testimonials .container {
+  margin-left: 0;
+  margin-right: 0;
+}
+
+#testimonials header {
+  margin-bottom: 0;
+  margin-left: 2.4rem;
+  margin-right: 2.4rem;
+}
+
+#testimonials blockquote {
+  padding: 3.2rem;
+  box-shadow: 0px 0px 12px rgba(0, 0, 0, 0.08);
+  border-radius: 0.4rem;
+  background: var(--dark);
+}
+
+#testimonials blockquote p {
+  position: relative;
+  text-indent: 3rem;
+  margin-bottom: 2.4rem;
+  color: var(--white);
+}
+
+#testimonials blockquote p span {
+  font: 700 4rem serif;
+  position: absolute;
+  top: -0.6rem;
+  left: -3rem;
+}
+
+#testimonials cite {
+  display: flex;
+  align-items: center;
+  font-style: normal;
+  color: var(--white);
+}
+
+#testimonials cite img {
+  width: 3.2rem;
+  height: 3.2rem;
+  margin-right: 0.8rem;
+  object-fit: cover;
+  clip-path: circle();
+}
+
+/* Swiper */
+.swiper-slide {
+  height: auto;
+  padding: 6.4rem 1.6rem;
+}
+
+.swiper-pagination-bullet {
+  background: var(--light-grey);
+}
+
+.swiper-pagination-bullet-active {
+  background: var(--medium);
+}
+
+/* Contact */
+
+#contact .grid {
+  gap: 6.4rem;
+}
+
+#contact .text p {
+  margin-bottom: 3.2rem;
+}
+
+#contact .button i,
+#contact ul li i {
+  font-size: 2.4rem;
+  margin-right: 1rem;
+}
+
+#contact ul.grid {
+  gap: 3.2rem;
+}
+
+#contact ul li {
+  display: flex;
+  align-items: center;
+}
+
+#contact ul li i {
+  color: var(--medium);
+}
+
+/* Footer */
+
+footer {
+  background: var(--medium);
+}
+
+footer.section {
+  padding: 6.4rem 0;
+}
+
+footer .logo {
+  display: inline-block;
+  margin-bottom: 2.4rem;
+}
+
+footer .brand p {
+  color: var(--white);
+  margin-bottom: 1.2rem;
+}
+
+footer i {
+  color: var(--white);
+  font-size: 2.4rem;
+}
+
+footer .social {
+  display: flex;
+  gap: 3.2rem;
+}
+
+footer .social a {
+  transition: var(--transition-time);
+}
+
+footer .social a:hover {
+  transform: translateY(-0.5rem);
+}
+
+/* Back to top */
+
+.back-to-top {
+  color: var(--white);
+  background: var(--medium);
+  position: fixed;
+  right: 1.6rem;
+  bottom: 1.6rem;
+  padding: 0.8rem;
+  /* clip-path: circle(); */
+  /* Usei "border-radius: 50%" no lugar para poder ficar visível no footer, que é da mesma cor que o botão */
+  border-radius: 50%;
+  border: 0.2rem solid var(--background);
+  font-size: 2.4rem;
+  line-height: 0;
+  visibility: hidden;
+  opacity: 0;
+  transition: var(--transition-time);
+  transform: translateY(100%);
+}
+
+.back-to-top.show {
+  visibility: visible;
+  opacity: 1;
+  transform: translateY(0%);
+}
+
+/* Responsive */
+/* extra large devices: 1200 >
+large devices: 1023 >
+semi larger devices: 992 >
+medium devices: 767 >
+small devices: < 767 */
+
+@media (min-width: 1366px) {
+  .container {
+    margin: 0 min(12.2rem, auto);
+    /* margin: 0 auto; */
+  }
+}
+
+@media (min-width: 1200px) {
+  /* Base */
+
+  .container {
+    max-width: 112rem;
+    margin: 0 12.2rem;
+  }
+
+  .section {
+    padding: 16rem 0;
+  }
+
+  .setion header,
+  #services header,
+  #testimonials header {
+    max-width: 48.2rem;
+    text-align: center;
+    margin: 0 auto;
+  }
+
+  .button {
+    height: 5rem;
+  }
+
+  main {
+    margin-top: var(--header-height);
+  }
+
+  /* Header */
+
+  #header .container {
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  nav .menu {
+    opacity: 1;
+    visibility: visible;
+    top: 0;
+  }
+
+  nav .menu ul {
+    display: flex;
+    gap: 3.2rem;
+  }
+
+  nav .menu ul li a.title {
+    font: 400 1.6rem "DM Sans", sans-serif;
+    color: var(--white);
+  }
+
+  nav .menu ul li a:hover,
+  nav .menu ul li a.active {
+    color: var(--medium);
+  }
+
+  nav .icon-menu {
+    display: none;
+    visibility: hidden;
+  }
+
+  /* Home */
+
+  #home .container {
+    grid-auto-flow: column;
+    justify-content: space-between;
+    margin: 0 auto;
+  }
+
+  #home .image {
+    /* "order" só funciona porque está em um elemento com "display: grid / flex" */
+    order: 1;
+  }
+
+  #home .text {
+    order: 0;
+    max-width: 39.6rem;
+    text-align: left;
+  }
+
+  /* About */
+
+  #about .container {
+    grid-auto-flow: column;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  #about .text {
+    text-align: left;
+  }
+
+  /* services */
+
+  #services .container {
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .cards {
+    grid-template-columns: 1fr 1fr;
+    padding-left: 0 4.8rem;
+    padding-right: 0 4.8rem;
+  }
+
+  .cards video {
+    height: 100%;
+    width: 260px;
+  }
+
+  /* Testimonials */
+
+  #testimonials .container {
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  /* Contact */
+  #contact .container {
+    grid-auto-flow: column;
+    align-items: center;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  #contact .text {
+    grid-auto-flow: column;
+    max-width: 40.4rem;
+  }
+
+  /* Footer */
+
+  footer.section {
+    padding: 6rem 0;
+  }
+
+  footer .container {
+    grid-auto-flow: column;
+    justify-content: space-between;
+    align-items: center;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  footer .logo {
+    font-size: 3.8rem;
+  }
+}
+
+@media (min-width: 992px) {
+  :root {
+    --title-font-size: 3.6rem;
+    --subtitle-font-size: 1.8rem;
+  }
+}
